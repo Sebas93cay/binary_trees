@@ -60,5 +60,4 @@
   
 ## Authors
 
-* **Juan Sebastian Caicedo Alfonso**<[Sebas93cay](https://github.com/Sebas93cay)> and **Jaime Andres Aricapa Perez**<[Jaricapa-holberton
-](https://github.com/Jaricapa-holberton)>
+* **Juan Sebastian Caicedo Alfonso**<[Sebas93cay](https://github.com/Sebas93cay)> and **Jaime Andres Aricapa Perez**<[Jaricapa-holberton](https://github.com/Jaricapa-holberton)>
