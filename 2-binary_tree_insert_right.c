@@ -19,7 +19,7 @@ binary_tree_t *binary_tree_insert_right(binary_tree_t *parent, int value)
     /* assing values and prepare pointers */
 	new_right->n = value;
 	new_right->parent = parent;
-    /* because is right, right points to NULL*/
+    /* because is right, left points to NULL*/
 	new_right->right = NULL;
 	new_right->right = parent->right;
     /* check if the node is not a leaf */
