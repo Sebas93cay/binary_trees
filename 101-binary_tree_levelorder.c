@@ -7,7 +7,7 @@
 size_t binary_tree_height_4(const binary_tree_t *tree)
 {
 	size_t height_l, height_r, max_height;
-	
+
 	if (tree == NULL)
 		return (0);
 	height_l = binary_tree_height_4(tree->left);
@@ -37,15 +37,14 @@ void traverse_level(const binary_tree_t *tree, int level, void (*func)(int))
 }
 
 /**
- * binary_tree_levelorder - goes through a binary tree using level-order traversal
+ * binary_tree_levelorder - walk a tree using level-order traversal
  * @tree: tree to traverse level
- * @level: level to traverse
  * @func: a pointer to a function to call for each node.
  */
 void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int))
 {
 	unsigned int level;
-	
+
 	for (level = 0; level < binary_tree_height_4(tree); level++)
 	{
 		traverse_level(tree, level, func);
