@@ -10,20 +10,13 @@
  */
 bst_t *bst_insert_recursively(bst_t **tree, int value, bst_t *parent)
 {
-	if (value == (*tree)->n)
-		return (NULL);
-
 	if (*tree == NULL)
 	{
-		*tree = malloc(sizeof(bst_t));
-		if (!(*tree))
-			return (NULL);
-		(*tree)->parent = parent;
-		(*tree)->n = value;
-		(*tree)->left = NULL;
-		(*tree)->right = NULL;
+		*tree = binary_tree_node(parent, value);
 		return (*tree);
 	}
+	if (value == (*tree)->n)
+		return (NULL);
 	else if(value > (*tree)->n)
 		return (bst_insert_recursively(&(*tree)->right, value, *tree));
 	return (bst_insert_recursively(&(*tree)->left, value, *tree));
@@ -31,8 +24,12 @@ bst_t *bst_insert_recursively(bst_t **tree, int value, bst_t *parent)
 
 bst_t *bst_insert(bst_t **tree, int value)
 {
+	bst_t *parent = NULL;
+
 	if (!tree)
 		return (NULL);
+	if (*tree)
+		parent = (*tree)->parent;
 
-	return (bst_insert_recursively(tree, value, NULL));
+	return (bst_insert_recursively(tree, value, parent));
 }
