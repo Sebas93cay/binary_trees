@@ -9,7 +9,7 @@ size_t binary_tree_size(const binary_tree_t *tree)
 	if (!tree)
 		return (0);
 	return (binary_tree_size(tree->left) +
-		binary_tree_size(tree->right) + 1);
+			binary_tree_size(tree->right) + 1);
 }
 /**
  * check_complete - measures the size of a binary tree
@@ -27,7 +27,7 @@ int check_complete(const binary_tree_t *tree, size_t index, size_t numnodes)
 		return (0);
 
 	return (check_complete(tree->left, 2 * index + 1, numnodes) &&
-	       check_complete(tree->right, 2 * index + 2, numnodes));
+			check_complete(tree->right, 2 * index + 2, numnodes));
 }
 /**
  * binary_tree_is_complete - checks if a binary tree is complete
@@ -38,8 +38,8 @@ int binary_tree_is_complete(const binary_tree_t *tree)
 {
 	size_t numnodes;
 
-	numnodes = binary_tree_size(tree);
 	if (tree == NULL)
-		return (1);
+		return (0);
+	numnodes = binary_tree_size(tree);
 	return (check_complete(tree, 0, numnodes));
 }
