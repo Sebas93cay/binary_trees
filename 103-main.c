@@ -21,11 +21,11 @@ int main(void)
 	printf("\n");
 
 	root->right->right = binary_tree_node(root->right, 450);
+	root->right->right->left = binary_tree_node(root->right, 449);
 	root->right->left = binary_tree_node(root->right, 420);
 	binary_tree_print(root);
 	printf("Rotate-left %d\n", root->n);
-	root = binary_tree_rotate_left(root);
+	binary_tree_rotate_left(root->right);
 	binary_tree_print(root);
-	binary_tree_delete(root);
 	return (0);
 }
