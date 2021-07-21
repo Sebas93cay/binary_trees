@@ -63,7 +63,7 @@ size_t binary_tree_height_45(const binary_tree_t *tree)
  */
 int binary_tree_is_avl(const binary_tree_t *tree)
 {
-	int diff = 0, avl_left, avl_right;
+	int diff = 0;
 
 	if (!tree)
 		return (0);
