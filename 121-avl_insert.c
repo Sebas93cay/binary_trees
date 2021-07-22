@@ -48,14 +48,15 @@ bst_t *bst_insert(bst_t **tree, int value)
  * avl_auto_balance - balance path above node to make sure every
  * sub tree in the path is a valid avl tree
  * @node: node to start path
+ * Return: a pointer to the root node of the tree after being balanced
  */
-void avl_auto_balance(avl_t *node)
+avl_t *avl_auto_balance(avl_t *node)
 {
 	int balance_parent, balance_node = 0;
 	avl_t *parent = NULL;
 
 	if (node->parent == NULL)
-		return;
+		return (node);
 
 	parent = node->parent;
 	balance_parent = binary_tree_balance(node->parent);
@@ -72,7 +73,9 @@ void avl_auto_balance(avl_t *node)
 			node = binary_tree_rotate_right(node);
 		parent = binary_tree_rotate_left(parent);
 	}
-	avl_auto_balance(node->parent);
+	if (node->parent == NULL)
+		return (node);
+	return (avl_auto_balance(node->parent));
 }
 
 /**
@@ -90,6 +93,6 @@ avl_t *avl_insert(avl_t **tree, int value)
 		return (NULL);
 
 	newnode = bst_insert(tree, value);
-	avl_auto_balance(newnode);
+	*tree = avl_auto_balance(newnode);
 	return (newnode);
 }
