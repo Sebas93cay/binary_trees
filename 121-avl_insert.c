@@ -86,6 +86,9 @@ avl_t *avl_insert(avl_t **tree, int value)
 {
 	avl_t *newnode = NULL;
 
+	if (!tree)
+		return (NULL);
+
 	newnode = bst_insert(tree, value);
 	avl_auto_balance(newnode);
 	return (newnode);
