@@ -63,13 +63,13 @@ avl_t *avl_auto_balance(avl_t *node)
 	balance_node = binary_tree_balance(node);
 	if (balance_parent > 1)
 	{
-		if (balance_node == -1)
+		if (balance_node < 0)
 			node = binary_tree_rotate_left(node);
 		parent = binary_tree_rotate_right(parent);
 	}
 	else if (balance_parent < -1)
 	{
-		if (balance_node == 1)
+		if (balance_node > 0)
 			node = binary_tree_rotate_right(node);
 		parent = binary_tree_rotate_left(parent);
 	}
