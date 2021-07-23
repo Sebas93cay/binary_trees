@@ -12,33 +12,33 @@ int main(void)
 	avl_t *node;
 
 	root = NULL;
-	node = avl_insert(&root, 98);
-	node = avl_insert(&root, 402);
-	printf("\nInserted: %d\n", node->n);
-	node = avl_insert(&root, 46);
-	printf("\nInserted: %d\n", node->n);
+	/*node = avl_insert(&root, 98);*/
+	/*node = avl_insert(&root, 402);*/
+	/*printf("\nInserted: %d\n", node->n);*/
+	/*node = avl_insert(&root, 46);*/
+	/*printf("\nInserted: %d\n", node->n);*/
+	/*binary_tree_print(root);*/
+	node = avl_insert(NULL, 128);
+	printf("\nInserted: %p\n", (void *)node);
 	binary_tree_print(root);
-	node = avl_insert(&root, 128);
-	printf("\nInserted: %d\n", node->n);
-	binary_tree_print(root);
-	node = avl_insert(&root, 256);
-	printf("\nInserted: %d\n", node->n);
-	binary_tree_print(root);
-	node = avl_insert(&root, 512);
-	printf("\nInserted: %d\n", node->n);
-	binary_tree_print(root);
-	node = avl_insert(&root, 540);
-	printf("\nInserted: %d\n", node->n);
-	binary_tree_print(root);
-	node = avl_insert(&root, 550);
-	printf("\nInserted: %d\n", node->n);
-	binary_tree_print(root);
-	node = avl_insert(&root, 545);
-	printf("\nInserted: %d\n", node->n);
-	binary_tree_print(root);
-	node = avl_insert(&root, 530);
-	printf("\nInserted: %d\n", node->n);
-	binary_tree_print(root);
+	/*node = avl_insert(&root, 256);*/
+	/*printf("\nInserted: %d\n", node->n);*/
+	/*binary_tree_print(root);*/
+	/*node = avl_insert(&root, 512);*/
+	/*printf("\nInserted: %d\n", node->n);*/
+	/*binary_tree_print(root);*/
+	/*node = avl_insert(&root, 540);*/
+	/*printf("\nInserted: %d\n", node->n);*/
+	/*binary_tree_print(root);*/
+	/*node = avl_insert(&root, 550);*/
+	/*printf("\nInserted: %d\n", node->n);*/
+	/*binary_tree_print(root);*/
+	/*node = avl_insert(&root, 545);*/
+	/*printf("\nInserted: %d\n", node->n);*/
+	/*binary_tree_print(root);*/
+	/*node = avl_insert(&root, 530);*/
+	/*printf("\nInserted: %d\n", node->n);*/
+	/*binary_tree_print(root);*/
 	/*node = avl_insert(&root, 410);*/
 	/*printf("\nInserted: %d\n", node->n);*/
 	/*binary_tree_print(root);*/

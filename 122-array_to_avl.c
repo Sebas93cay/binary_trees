@@ -15,9 +15,9 @@ avl_t *array_to_avl(int *array, size_t size)
 		return (NULL);
 	for (counter = 0; counter < size; counter++)
 	{
-		printf("inserted: %i\n", array[counter]);
+		/*printf("inserted: %i\n", array[counter]);*/
 		avl_insert(&tree, array[counter]);
-		binary_tree_print(tree);
+		/*binary_tree_print(tree);*/
 	}
 	return (tree);
 }
