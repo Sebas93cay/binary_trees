@@ -50,7 +50,8 @@ int binary_tree_is_full(const binary_tree_t *tree);
 int binary_tree_is_perfect(const binary_tree_t *tree);
 binary_tree_t *binary_tree_sibling(binary_tree_t *node);
 binary_tree_t *binary_tree_uncle(binary_tree_t *node);
-binary_tree_t *binary_trees_ancestor(const binary_tree_t *first, const binary_tree_t *second);
+binary_tree_t *binary_trees_ancestor(const binary_tree_t *first,
+		const binary_tree_t *second);
 void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int));
 int binary_tree_is_complete(const binary_tree_t *tree);
 binary_tree_t *binary_tree_rotate_left(binary_tree_t *tree);
@@ -65,5 +66,19 @@ avl_t *avl_insert(avl_t **tree, int value);
 avl_t *avl_remove(avl_t *root, int value);
 avl_t *array_to_avl(int *array, size_t size);
 
+/**
+ * ASSIGN_NEW_CHILD - assign new child to parent where old child
+ * currently is
+ * @parent: parent
+ * @old_child: old child
+ * @new_child: new child
+ */
+#define ASSIGN_NEW_CHILD(parent, old_child, new_child)\
+	do {\
+		if ((parent)->left == (old_child))\
+		(parent)->left = (new_child);\
+		else\
+		(parent)->right = (new_child);\
+	} while (0)
 
 #endif /* _BINARY_TREES_H_ */

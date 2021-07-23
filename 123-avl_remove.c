@@ -40,6 +40,36 @@ bst_t *replace_with_node_at_right(bst_t *node_to_remove)
 }
 
 /**
+ * avl_auto_balance_remove - balance path of node up to root of the tree
+ * after a node has been removed
+ * @node: node
+ * Return: pointer to the root of the tree after being balanced
+ */
+avl_t *avl_auto_balance_remove(avl_t *node)
+{
+	int node_balance = 0;
+
+	node_balance = binary_tree_balance(node);
+	if (node_balance > 1)
+	{
+		if (binary_tree_balance(node->left) < 0)
+			node->left = binary_tree_rotate_left(node->left);
+		node = binary_tree_rotate_right(node);
+	}
+	else if (node_balance < -1)
+	{
+		if (binary_tree_balance(node->right) > 0)
+			node->right = binary_tree_rotate_right(node->right);
+		node = binary_tree_rotate_left(node);
+	}
+	if (node->parent)
+		return (avl_auto_balance_remove(node->parent));
+	else
+		return (node);
+}
+
+
+/**
  * bst_remove_recursive - remove a node recursively
  * @node: node to start looking for value in the tree
  * @value: value to remove in the tree
@@ -49,7 +79,7 @@ bst_t *replace_with_node_at_right(bst_t *node_to_remove)
  */
 bst_t *bst_remove_recursive(bst_t *node, int value, bst_t *root)
 {
-	bst_t *node_to_remove = NULL;
+	bst_t *node_to_remove = NULL, *parent = NULL;
 
 	if (!node)
 		return (NULL);
@@ -59,28 +89,25 @@ bst_t *bst_remove_recursive(bst_t *node, int value, bst_t *root)
 		if (node->right)
 			node = replace_with_node_at_right(node_to_remove);
 		else
+		{
+			parent = node->parent;
 			node = node->left;
+		}
 		if (node)
 		{
 			node->parent = node_to_remove->parent;
 			if (node->parent)
-			{
-				if (node->parent->left == node_to_remove)
-					node->parent->left = node;
-				else
-					node->parent->right = node;
-			}
+				ASSIGN_NEW_CHILD(node->parent, node_to_remove, node);
 		}
 		else
-		{
-			if (node_to_remove->parent->left == node_to_remove)
-				node_to_remove->parent->left = NULL;
-			else
-				node_to_remove->parent->right = NULL;
-		}
+			ASSIGN_NEW_CHILD(node_to_remove->parent, node_to_remove, NULL);
 		if (root == node_to_remove)
 			root = node;
 		free(node_to_remove);
+		if (node)
+			avl_auto_balance_remove(node);
+		else
+			avl_auto_balance_remove(parent);
 		return (root);
 	}
 	else
