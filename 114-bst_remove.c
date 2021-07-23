@@ -22,10 +22,13 @@ bst_t *least_node(bst_t *root)
  */
 void new_offspring(bst_t *parent, bst_t *old_son, bst_t *new_son)
 {
-	if (parent->left == old_son)
-		parent->left = new_son;
-	else
-		parent->right = new_son;
+	if (parent)
+	{
+		if (parent->left == old_son)
+			parent->left = new_son;
+		else
+			parent->right = new_son;
+	}
 }
 
 /**

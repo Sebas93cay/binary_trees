@@ -106,7 +106,7 @@ bst_t *bst_remove_recursive(bst_t *node, int value, bst_t *root)
 		free(node_to_remove);
 		if (node)
 			avl_auto_balance_remove(node);
-		else
+		else if(parent)
 			avl_auto_balance_remove(parent);
 		return (root);
 	}

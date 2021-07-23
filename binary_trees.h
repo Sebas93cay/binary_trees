@@ -75,10 +75,13 @@ avl_t *array_to_avl(int *array, size_t size);
  */
 #define ASSIGN_NEW_CHILD(parent, old_child, new_child)\
 	do {\
-		if ((parent)->left == (old_child))\
-		(parent)->left = (new_child);\
-		else\
-		(parent)->right = (new_child);\
+		if (parent)\
+		{\
+			if ((parent)->left == (old_child))\
+			(parent)->left = (new_child);\
+			else\
+			(parent)->right = (new_child);\
+		}\
 	} while (0)
 
 #endif /* _BINARY_TREES_H_ */
